@@ -1,0 +1,113 @@
+<html>
+
+<head>
+    <title>Illusion Snake Game</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container" id="container">
+        <canvas id="c" aria-label="Illusion Snake Game"></canvas>
+
+        <div class="top-left" id="scoreLabel">Score: 0</div>
+        <div class="bottom-left" id="stateLabel">Tap to start</div>
+        <div class="admin-hint hidden" id="adminHint">Admin input active</div>
+
+        <div class="admin-input-wrap hidden" id="adminInputWrap" aria-hidden="true">
+            <div class="admin-input" role="dialog" aria-label="Admin code input">
+                <div style="color:var(--muted);font-size:13px;padding-left:6px">Code:</div>
+                <input id="adminCodeInput" type="text" autocomplete="off" autocapitalize="off" spellcheck="false"
+                    placeholder="type secret word then Enter" />
+                <button id="adminCodeCancel" class="secondary">Cancel</button>
+            </div>
+        </div>
+
+        <div class="overlay hidden" id="adminPasswordPanel" aria-hidden="true">
+            <div class="panel" role="dialog" aria-modal="true" aria-label="Admin password">
+                <h2>Admin Password</h2>
+                <div class="row">
+                    <input id="adminPasswordInput" type="password" placeholder="Enter admin password" />
+                    <button id="adminPasswordSubmit">Unlock</button>
+                </div>
+                <div class="row" style="margin-top:10px;justify-content:flex-end">
+                    <button class="secondary" id="adminPasswordCancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="overlay" id="startOverlay">
+            <div class="panel" role="dialog" aria-modal="true" aria-label="Start game">
+                <h2>Enter player name</h2>
+                <div class="row">
+                    <input id="playerName" type="text" placeholder="Your name" maxlength="24" />
+                    <button id="startBtn">Start</button>
+                </div>
+                <div class="small">Name is kept for this session. Play multiple rounds with the same name.</div>
+                <div class="row" style="justify-content:space-between;margin-top:12px">
+                    <button class="secondary" id="viewLB">Leaderboard</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="overlay hidden" id="gameOverOverlay">
+            <div class="panel" role="dialog" aria-modal="true" aria-label="Game over">
+                <h2 id="gameOverTitle">Game Over</h2>
+                <div class="small" id="finalScore">Score: 0</div>
+                <div class="row" style="margin-top:12px">
+                    <button id="playAgain">Play Again</button>
+                    <button class="secondary" id="toLeaderboard">Leaderboard</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="overlay hidden" id="leaderboardOverlay">
+            <div class="panel" role="dialog" aria-modal="true" aria-label="Leaderboard">
+                <h2>Leaderboard</h2>
+                <div class="leaderboard" id="leaderboardList"></div>
+                <div class="row" style="justify-content:flex-end;margin-top:12px">
+                    <button class="secondary" id="closeLB">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="overlay hidden" id="adminOverlay">
+            <div class="panel" role="dialog" aria-modal="true" aria-label="Admin controls">
+                <h2>Admin Controls</h2>
+                <div class="admin-panel">
+                    <div class="small">Authorized admin actions</div>
+                    <button id="adminClear">Clear Leaderboard</button>
+                    <button class="secondary" id="adminClose">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-mobile" id="mobileControls" aria-hidden="false">
+            <div class="dpad" id="dpad">
+                <div></div><button data-dir="up" aria-label="Up">▲</button>
+                <div></div>
+                <button data-dir="left" aria-label="Left">◀</button><button data-dir="down"
+                    aria-label="Down">▼</button><button data-dir="right" aria-label="Right">▶</button>
+                <div></div><button id="tapBtn" class="tap-btn" aria-label="Tap">●</button>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmModal" class="confirm-modal hidden" role="dialog" aria-modal="true" aria-labelledby="confirmTitle"
+        aria-describedby="confirmDesc">
+        <div class="confirm-panel" role="document">
+            <h3 id="confirmTitle">Confirm action</h3>
+            <p id="confirmDesc">Are you sure?</p>
+            <div class="confirm-actions">
+                <button id="confirmCancel" class="btn secondary">Cancel</button>
+                <button id="confirmOk" class="btn danger">Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
