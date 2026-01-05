@@ -13,7 +13,6 @@ https://universal-coding-experiments.github.io/illusion_snake_game/
 - Canvas-based rendering with illusionary rotation effects
 - Keyboard and touch controls plus on-screen D‑pad for mobile
 - Client leaderboard stored in localStorage with Top‑3 display
-- Admin UI for demo management (client-only)
 - Responsive layout and accessible keyboard navigation
 
 ## 🚀 Getting Started
